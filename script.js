@@ -6,13 +6,6 @@ import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https:/
 import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDZ1G8mcnYBeLQkSeSjbfvszXcrGt5Byf8",
-  authDomain: "kinyoukai-app.firebaseapp.com",
-  projectId: "kinyoukai-app",
-  storageBucket: "kinyoukai-app.firebasestorage.app",
-  messagingSenderId: "1022307284484",
-  appId: "1:1022307284484:web:30f6534a0c46a8a966a751"
-};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
