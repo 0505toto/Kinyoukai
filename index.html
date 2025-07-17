@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>金曜会ポータル</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>📅 金曜会ポータル</h1>
+
+    <div class="card">
+      <label>開催日：</label>
+      <input type="date" id="dateInput" />
+
+      <label>議長名：</label>
+      <input type="text" id="chairInput" placeholder="例：高原 徹吏" />
+
+      <div id="agendaList">
+        <!-- 議題リストがここに追加される -->
+      </div>
+      <button id="addAgendaBtn">＋ 議題を追加</button>
+
+      <button id="saveBtn">💾 保存</button>
+    </div>
+
+    <h2>📖 保存された議題</h2>
+    <div id="savedData"></div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
