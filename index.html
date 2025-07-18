@@ -1,35 +1,61 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>金曜会ポータル</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>週刊！金曜会ポータル</title>
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-  <div class="container">
-    <h1>📅 金曜会ポータル</h1>
 
-    <div class="card">
-      <label>開催日：</label>
-      <input type="date" id="dateInput" />
+    <header>
+        <h1>週刊！金曜会ポータル 🚀</h1>
+        <p>今日の会議を、最高にクリエイティブな一日にしよう！</p>
+    </header>
 
-      <label>議長名：</label>
-      <input type="text" id="chairInput" placeholder="例：高原 徹吏" />
+    <main class="container">
+        <section id="meeting-details" class="card">
+            <h2><span class="icon">📅</span>今回の金曜会</h2>
+            <div class="input-group">
+                <label for="meeting-date">開催日</label>
+                <input type="date" id="meeting-date">
+            </div>
+            <div class="input-group">
+                <label for="chairperson">議長</label>
+                <input type="text" id="chairperson" placeholder="キラキラネームでもOK！">
+            </div>
+        </section>
 
-      <div id="agendaList">
-        <!-- 議題リストがここに追加される -->
-      </div>
-      <button id="addAgendaBtn">＋ 議題を追加</button>
+        <section id="agenda-section" class="card">
+            <h2><span class="icon">📋</span>議題リスト</h2>
+            <ul id="agenda-list">
+                </ul>
+        </section>
 
-      <button id="saveBtn">💾 保存</button>
-    </div>
+        <section id="add-agenda" class="card">
+            <h2><span class="icon">✍️</span>議題を追加</h2>
+            <form id="add-agenda-form">
+                <div class="input-group">
+                    <label for="topic">議題</label>
+                    <input type="text" id="topic" placeholder="例：来週のランチについて" required>
+                </div>
+                <div class="input-group">
+                    <label for="presenter">発表者</label>
+                    <input type="text" id="presenter" placeholder="例：鈴木さん" required>
+                </div>
+                <div class="input-group">
+                    <label for="time">時間（分）</label>
+                    <input type="number" id="time" min="1" placeholder="例: 10" required>
+                </div>
+                <button type="submit" class="btn-add">リストに追加 ✨</button>
+            </form>
+        </section>
+    </main>
 
-    <h2>📖 保存された議題</h2>
-    <div id="savedData"></div>
-  </div>
+    <footer>
+        <p>&copy; 2025 The Friday Club Members.</p>
+    </footer>
 
-  <!-- Firebase SDK -->
-  <script type="module" src="script.js"></script>
+    <script src="script2.js" defer></script>
 </body>
 </html>
