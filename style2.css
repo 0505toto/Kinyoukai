@@ -1,0 +1,177 @@
+/* Google Fontsから日本語フォントを読み込み */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+/* カラーパレットなどをCSS変数として定義（後で色の変更が簡単になります） */
+:root {
+    --primary-color: #4a90e2; /* メインのアクセントカラー (青系) */
+    --background-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* 背景のグラデーション */
+    --card-bg-color: rgba(255, 255, 255, 0.8); /* カードの背景色 (少し透明) */
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --border-color: #ddd;
+}
+
+/* --- 全体の基本スタイル --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--background-gradient);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 2rem; /* 画面の端に余白 */
+    overflow-x: hidden; /* 横スクロールバーを防止 */
+}
+
+/* --- ヘッダーとフッター --- */
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.8s ease-out; /* ふわっと下から表示されるアニメーション */
+}
+
+header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+header p {
+    font-size: 1rem;
+    color: #667;
+}
+
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* --- レイアウトとカードデザイン --- */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem; /* カード間の余白 */
+}
+
+.card {
+    background: var(--card-bg-color);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+    backdrop-filter: blur(12px); /* ガラスのようなすり抜け効果（モダンな表現） */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0; /* アニメーションの初期状態は透明 */
+    animation: fadeInUp 0.6s ease-out forwards; /* ふわっと下から浮かび上がるアニメーション */
+}
+
+/* カードが順番に表示されるように遅延を設定 */
+.card:nth-of-type(1) { animation-delay: 0.2s; }
+.card:nth-of-type(2) { animation-delay: 0.4s; }
+.card:nth-of-type(3) { animation-delay: 0.6s; }
+
+.card:hover {
+    transform: translateY(-10px); /* マウスを乗せると少し浮き上がる */
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* アイコンと文字の間のスペース */
+}
+
+/* --- フォーム関連のスタイル --- */
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit; /* bodyのフォントを継承 */
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.2); /* フォーカス時に青い枠線 */
+}
+
+.btn-add {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+    background: #3a80d2; /* 少し濃い青に */
+    transform: scale(1.03); /* 少し拡大 */
+}
+
+/* --- 議題リストのスタイル --- */
+#agenda-list {
+    list-style: none; /*箇条書きの黒丸を消す*/
+}
+
+/* JavaScriptで追加されるli要素のスタイルをあらかじめ定義 */
+#agenda-list li {
+    background: #f4f7f6;
+    border-left: 5px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.8rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    animation: slideInLeft 0.5s ease; /* 左からスライドインするアニメーション */
+}
+
+/* --- アニメーションの定義 --- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
